@@ -1,0 +1,8 @@
+com\spring5\practice\config\AppInitializer.class
+com\spring5\practice\model\FormObject.class
+com\spring5\practice\config\RootConfig.class
+com\spring5\practice\controllers\RootController.class
+com\spring5\practice\config\ServletConfig.class
+com\spring5\practice\controllers\FormController.class
+com\spring5\practice\service\Account.class
+com\spring5\practice\service\AccountService.class
