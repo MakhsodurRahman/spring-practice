@@ -1,66 +1,42 @@
 package com.spring5.practice.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
+@Data
 @Entity
-@Table(name = "student_table")
-public class User implements Serializable {
+@Table(name = "user_table")
+public class UserTable implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "textField")
-    private String textField;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phoneNumber")
-    private Long phoneNumber;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "ddSelectionOption")
-    private String ddSelectionOption;
+    @Column(name = "user_location")
+    private String userLocation;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToOne( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "at_id", referencedColumnName = "at_id")
+    private Attachment attachment;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @OneToMany(orphanRemoval = true, mappedBy = "userTable")
+    private List<Story> stories;
 
-    public String getTextField() {
-        return textField;
-    }
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id", referencedColumnName = "l_id")
 
-    public void setTextField(String textField) {
-        this.textField = textField;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Long getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(Long phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getDdSelectionOption() {
-        return ddSelectionOption;
-    }
-
-    public void setDdSelectionOption(String ddSelectionOption) {
-        this.ddSelectionOption = ddSelectionOption;
-    }
+    private Location location;
 }

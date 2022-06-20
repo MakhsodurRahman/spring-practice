@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="hibernate" name="Hibernate">
+      <configuration>
+        <datasource-map>
+          <unit-entry name="hbm.cfg.xml" value="2d5e150e-3cea-4826-ac9c-b09cae00784a" />
+        </datasource-map>
+        <naming-strategy-map />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/social-community-project/src/main/resources/hbm.cfg.xml" />
+      </configuration>
+    </facet>
+  </component>
+</module>
