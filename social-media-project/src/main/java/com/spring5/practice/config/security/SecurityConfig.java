@@ -42,14 +42,23 @@ public class SecurityConfig {
                         .antMatchers(("/location/**")).hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form
-                        .loginPage("/login")
-                        .permitAll()
-                        .usernameParameter("username")
-                        .passwordParameter("password")
-                        .loginProcessingUrl("/login-process")
-                        .defaultSuccessUrl("/")
-                        .permitAll()
+                .formLogin(form -> {
+                            try {
+                                form
+                                        .loginPage("/login")
+                                        .permitAll()
+                                        .usernameParameter("username")
+                                        .passwordParameter("password")
+                                        .loginProcessingUrl("/login-process")
+                                        .defaultSuccessUrl("/")
+                                        .permitAll()
+                                        .and()
+                                        .exceptionHandling()
+                                            .accessDeniedPage("/403");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
                 );
         return http.build();
     }

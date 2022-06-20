@@ -52,12 +52,12 @@
             <div class="col-md-4">
                 <div class="create">
 
-                    <sec:authorize access="hasRole('ROLE_ADMIN')">
+<%--                    <sec:authorize access="hasRole('ROLE_ADMIN')">--%>
 
                         <h5>Location</h5>
                         <a href="${pageContext.request.contextPath}/location/create/" target="_blank">Create Location</a><br><br>
                         <a href="${pageContext.request.contextPath}/location/maintain/" target="_blank">Location List</a>
-                    </sec:authorize>
+<%--                    </sec:authorize>--%>
 
                 </div>
                 <br><br>
