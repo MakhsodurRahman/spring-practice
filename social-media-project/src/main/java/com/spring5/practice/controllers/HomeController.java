@@ -12,8 +12,13 @@ public class HomeController {
         return "homepage";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     public String login() {
+
+        return "login";
+    }
+    @GetMapping("/user/logout")
+    public String loginOut() {
 
         return "login";
     }

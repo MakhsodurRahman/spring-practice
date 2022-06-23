@@ -18,10 +18,12 @@ C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\dao\St
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\service\UserService.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\enums\Role.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\config\DbConfig.java
+C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\config\security\CustomAccessDeniedHandler.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\controllers\UserController.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\dao\AttachmentDAOImpl.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\dao\UserDAOImpl.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\config\AppInitializer.java
+C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\config\AuthSuccessHandler.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\entity\Status.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\dao\UserDAO.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\controllers\StatusController.java

@@ -84,6 +84,10 @@
 							<div class="col-sm-6 controls">
 								<button type="submit" class="btn btn-success">Login</button>
 							</div>
+							<div class="col-sm-6 controls">
+								<label>Not Register?</label>
+								<a class="btn btn-success" href="${pageContext.request.contextPath}/user/create/">Sign Up</a>
+							</div>
 						</div>
 
 					</form:form>

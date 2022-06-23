@@ -16,4 +16,10 @@ public class RootConfig {
         return new BCryptPasswordEncoder();
     }
 
+
+    @Bean
+    public AuthSuccessHandler authSuccessHandler() {
+        return new AuthSuccessHandler();
+    }
+
 }

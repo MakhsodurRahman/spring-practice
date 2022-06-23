@@ -13,9 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +57,12 @@ public class UserController {
     }
 
     @PostMapping("/store")
-    public String store(Model model, @ModelAttribute("userRequestDto")  UserRequestDto userRequestDto, @RequestParam("image") MultipartFile multipartFile){
+    public String store(@Valid @ModelAttribute("userRequestDto")   UserRequestDto userRequestDto, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile){
+
+        if(bindingResult.hasErrors()){
+            System.out.println(bindingResult);
+            return "user/create";
+        }
         var user = new User();
 
         Attachment attachment = Utils.saveFile(multipartFile, Properties.USER_FOLDER);

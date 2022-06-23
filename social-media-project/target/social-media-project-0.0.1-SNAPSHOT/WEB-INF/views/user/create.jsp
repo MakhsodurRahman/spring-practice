@@ -22,11 +22,13 @@
                 <div class="mb-3">
                     <label  class="form-label">Name</label>
                     <form:input path="name" class="form-control"  placeholder="name"/>
+                    <form:errors path="name" cssClass="text-danger"/>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">Email address</label>
                     <form:input path="email" class="form-control" placeholder="name@example.com"/>
+                    <form:errors path="email" cssClass="text-danger"/>
                 </div>
 
                 <div class="mb-3">
