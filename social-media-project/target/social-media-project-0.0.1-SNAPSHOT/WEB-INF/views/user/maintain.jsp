@@ -39,7 +39,7 @@
 
                 <tr>
                     <td>${user.getId()}</td>
-                    <td class="td"><img src="/images/${user.getAttachment().getAttachmentPath()}" alt="" height="50px" width="50px" style="object-fit: cover"/></td>
+                    <td class="td"><img src="images${user.getAttachment().getAttachmentPath()}" alt="" height="50px" width="50px" style="object-fit: cover"/></td>
                         <%--                    <td><img src="/images/${user.getAttachment().getAttachmentPath()}" height="100" width="100" style="object-fit: cover"></td>--%>
                     <td>${user.getName()}</td>
                     <td>${user.getEmail()}</td>
