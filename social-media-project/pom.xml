@@ -122,13 +122,18 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- AspectJ dependencies -->
         <dependency>
-            <groupId>de.jensd</groupId>
-            <artifactId>fontawesomefx</artifactId>
-            <version>8.2</version>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.8</version>
+            <scope>runtime</scope>
         </dependency>
-
-
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>1.9.9.1</version>
+        </dependency>
 
     </dependencies>
 
