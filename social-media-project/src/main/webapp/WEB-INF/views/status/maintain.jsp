@@ -44,7 +44,7 @@
                     <td>${status.getPrivacy()}</td>
 
                     <c:forEach var="image" items="${status.getStatusAttachmentList()}">
-                        <td><img src="/images/${image.getAttachmentPath()}" alt="" height="100px" width="100px" style="object-fit: cover"/></td>
+                        <td><img src="/images${image.getAttachmentPath()}" alt="" height="100px" width="100px" style="object-fit: cover"/></td>
                     </c:forEach>
                     <td><a href="${updateLink}">Update</a></td>
                     <td>
