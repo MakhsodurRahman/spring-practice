@@ -17,7 +17,7 @@ public class UserDAOImpl implements UserDAO{
     @Autowired
     private SessionFactory sessionFactory;
     @Override
-    public void insert(User user) {
+    public User insert(User user) {
         Session session = sessionFactory.getCurrentSession();
 
         try{
@@ -26,6 +26,7 @@ public class UserDAOImpl implements UserDAO{
             e.printStackTrace();
             session.getTransaction().rollback();
         }
+        return user;
     }
 
     public List<User> getAll(){
@@ -46,6 +47,11 @@ public class UserDAOImpl implements UserDAO{
         session.flush();
     }
 
+    @Override
+    public User getById(Long id) {
+        return sessionFactory.getCurrentSession().get(User.class, id);
+    }
+
 
 
     public User findByUsername(String username) throws UsernameNotFoundException {
@@ -63,5 +69,18 @@ public class UserDAOImpl implements UserDAO{
         }
         session.flush();
         return user;
+    }
+
+
+    @Override
+    public void update(User user) {
+        Session session = sessionFactory.getCurrentSession();
+        try {
+            session.saveOrUpdate(user);
+        }catch (Exception e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.flush();
     }
 }
