@@ -14,12 +14,18 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/vendor/bootstrap/bootstrap.css"
 </head>
 <body>
+   
+
+    
     <%--@elvariable id="userRequestDto" type="java"--%>
-    <%--@elvariable id="user" type="java"--%>
-    <form:form action="${pageContext.request.contextPath}/user/update" method="post" modelAttribute="user">
+    <form:form action="${pageContext.request.contextPath}/user/update" method="post" modelAttribute="userRequestDto">
         <div class="container">
             <div class="row h-w">
                 <h4>Create User</h4>
+
+                <div class="form-group">
+                    <form:input  path="id" placeholder="${userRequestDto.id}" readonly="true" class="form-control"/>
+                </div><!-- readonly="true" eta dile value show korbe but edit kora jabe na -->
                 <div class="mb-3">
                     <label  class="form-label">Name</label>
                     <form:input path="name" class="form-control"  placeholder="name"/>

@@ -9,7 +9,8 @@ import com.spring5.practice.entity.Attachment;
 import com.spring5.practice.entity.Location;
 import com.spring5.practice.entity.User;
 import com.spring5.practice.enums.Role;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,15 +26,13 @@ import java.util.stream.Stream;
 
 @Controller
 @RequestMapping("/user")
+@AllArgsConstructor
 public class UserController {
 
-    @Autowired
-    private LocationDAO locationDAO;
-    @Autowired
-    private UserDAO userDAO;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    private final LocationDAO locationDAO;
+    private final UserDAO userDAO;
+    private final PasswordEncoder  passwordEncoder;
 
     @GetMapping("/create")
     public String create(Model model){
@@ -69,6 +68,7 @@ public class UserController {
 
         Location location = locationDAO.getByName(userRequestDto.getLocationName());
 
+
         user.setName(userRequestDto.getName());
         user.setEmail(userRequestDto.getEmail());
         user.setPassword(passwordEncoder.encode(userRequestDto.getPassword()));
@@ -87,6 +87,7 @@ public class UserController {
 
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete")
     public String delete(@RequestParam("userId") Long theId){
         userDAO.delete(theId);
@@ -96,6 +97,35 @@ public class UserController {
     public String maintain(Model model){
         List<User> userList = userDAO.getAll();
         model.addAttribute("userList", userList);
+        return "user/maintain";
+    }
+
+    @GetMapping("/showUpdate")
+    public String showUpdate(@RequestParam("userId") Long userId, Model model){
+        User user = userDAO.getById(userId);
+        UserRequestDto dto = new UserRequestDto();
+        dto.setId(userId);
+        System.out.println("=====================================v  "+user.getId());
+        dto.setName(user.getName());
+        dto.setEmail(user.getEmail());
+        dto.setPassword(user.getPassword());
+        model.addAttribute("userRequestDto",dto);
+        return "user/update";
+    }
+
+    @PostMapping("/update")
+    public String update(Model model,@ModelAttribute("userRequestDto") UserRequestDto userRequestDto){
+
+        System.out.println(userRequestDto.getEmail()+userRequestDto.getName()+"    "+userRequestDto.getId());
+        //System.out.println("========================================================="+id);
+        User user = userDAO.getById(userRequestDto.getId());
+
+        user.setId(userRequestDto.getId());
+        user.setName(userRequestDto.getName());
+        user.setEmail(userRequestDto.getEmail());
+        user.setPassword(userRequestDto.getPassword());
+        userDAO.update(user);
+
         return "user/maintain";
     }
 }

@@ -5,12 +5,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
 import java.util.List;
-import java.util.Optional;
 
 public interface UserDAO {
-    public void insert(User user);
+    public User insert(User user);
     public List<User> getAll();
    public void delete(Long theId);
+    public User getById(Long theId) ;
+    public void update(User user);
    public User findByUsername(String username) throws UsernameNotFoundException;
 
 
