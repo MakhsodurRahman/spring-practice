@@ -26,7 +26,7 @@
 	<div>
 		
 		<div id="loginbox" style="margin-top: 50px;"
-			class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
+			class="mainbox col-md-5 col-md-offset-4 col-sm-8 col-sm-offset-4">
 			
 			<div class="panel panel-info">
 
@@ -85,7 +85,7 @@
 								<button type="submit" class="btn btn-success">Login</button>
 							</div>
 							<div class="col-sm-6 controls">
-								<label>Not Register?</label>
+								<span>Not Registered?</span>
 								<a class="btn btn-success" href="${pageContext.request.contextPath}/user/create/">Sign Up</a>
 							</div>
 						</div>

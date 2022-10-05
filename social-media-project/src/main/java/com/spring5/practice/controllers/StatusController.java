@@ -10,6 +10,7 @@ import com.spring5.practice.entity.Attachment;
 import com.spring5.practice.entity.Location;
 import com.spring5.practice.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,6 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/status")
 public class StatusController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class StatusController {
     @Autowired
     private AttachmentDAO attachmentDAO;
 
-    @GetMapping("/create")
+    @GetMapping("status/create")
     public String create(Model model){
 
         List<Location> locations = locationDAO.getAll();
@@ -46,7 +46,7 @@ public class StatusController {
         return "status/create";
     }
 
-    @PostMapping("/store")
+    @PostMapping("status/store")
     public String store(Model model , @ModelAttribute("status") StatusRequestDto statusDto , @RequestParam("images")MultipartFile[] multipartFiles){
 
         Location location = locationDAO.getByName(statusDto.getLocation());
@@ -77,23 +77,24 @@ public class StatusController {
 
         locationDAO.update(location);
 
-        return "redirect:/status/maintain";
+        return "homepage";
     }
 
-    @GetMapping("/delete")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("status/delete")
     public String delete(@RequestParam("statusId") Long id){
 
         statusDAO.delete(id);
 
-        return "redirect:/status/maintain";
+        return "homepage";
     }
 
-    @GetMapping("/maintain")
+    @GetMapping("/")
     public String maintain(Model model){
         List<Status> statusList = statusDAO.getAll();
         //System.out.println(statusList.toString());
         model.addAttribute("statusList",statusList);
 
-        return "status/maintain";
+        return "homepage";
     }
 }

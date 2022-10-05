@@ -38,7 +38,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests(auth -> auth
                         .antMatchers("/resources/**", "/temp/**").permitAll()
-                        .antMatchers("/", "/user/login","/user/create/","/user/store").permitAll()
+                        .antMatchers("/", "/user/login","/user/create/","/user/store","/status/maintain").permitAll()
                         .antMatchers("/location/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )

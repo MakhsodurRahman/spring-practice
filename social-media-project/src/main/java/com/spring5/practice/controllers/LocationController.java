@@ -2,6 +2,7 @@ package com.spring5.practice.controllers;
 
 import com.spring5.practice.dao.LocationDAO;
 import com.spring5.practice.entity.Location;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/location")
+@AllArgsConstructor
 public class LocationController {
 
-    @Autowired
-    private LocationDAO locationDAO;
+    private final LocationDAO locationDAO;
     @GetMapping("/create")
     public String create(Model model){
         Location location = new Location();

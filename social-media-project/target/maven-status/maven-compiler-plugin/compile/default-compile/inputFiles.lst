@@ -15,6 +15,7 @@ C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\config
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\config\RootConfig.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\controllers\LocationController.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\dao\StatusDAOImpl.java
+C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\aop\LogginAspect.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\service\UserService.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\enums\Role.java
 C:\Spring-Project\social-media-project\src\main\java\com\spring5\practice\config\DbConfig.java
