@@ -29,7 +29,7 @@
 
             <c:forEach var="user" items="${userList}">
 
-                <c:url var="updateLink" value="/user/update">
+                <c:url var="updateLink" value="/user/showUpdate">
                     <c:param name="userId" value="${user.getId()}"/>
                 </c:url>
 
@@ -55,7 +55,8 @@
             </c:forEach>
 
         </table>
-
+        <input type="button" value="back to home"
+               onclick="window.location.href='/'; return false;" class="add-button">
     </div>
 </div>
 </body>
