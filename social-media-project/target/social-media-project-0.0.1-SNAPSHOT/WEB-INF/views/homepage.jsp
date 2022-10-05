@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -20,7 +21,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<div>
         <div class="container">
             <div class="row">
 
@@ -73,13 +73,13 @@
                                         </sec:authorize>
 
                                         <sec:authorize access="isAuthenticated()">
-                                            <sec:authentication property="name"/>
-                                            <form:form action="${pageContext.request.contextPath}/user/logout"
-                                                       method="POST">
+                                                <sec:authentication property="name"/>
+                                               <form:form action="${pageContext.request.contextPath}/user/logout"
+                                                          method="POST">
 
-                                                <input type="submit" value="Logout" />
+                                                   <input type="submit" value="Logout" />
 
-                                            </form:form>
+                                               </form:form>
                                         </sec:authorize>
 
                                   </li>
@@ -89,19 +89,56 @@
                     </div>
                 </nav>
             </div>
-        <%--        location and user section--%>
+                <%--        location and user section--%>
+                <!-- Add a logout button -->
 
 
-        <!-- Add a logout button -->
+                <!-- all post -->
 
-    </div>
-</div>
+        <div id="container">
+            <div id="contant">
 
+                <table class="table table-dark table-striped">
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Privacy</th>
+                        <th class="th" colspan="2">Attachments</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
 
-<style>
-    a{
-        text-decoration: none;
-    }
-</style>
-</body>
+                    <c:forEach var="status" items="${statusList}">
+
+                        <c:url var="updateLink" value="/status/update">
+                            <c:param name="statusId" value="${status.getId()}"/>
+                        </c:url>
+
+                        <c:url var="deleteLink" value="/">
+                            <c:param name="statusId" value="${status.getId()}"/>
+                        </c:url>
+
+                        <tr>
+                            <td>${status.getId()}</td>
+                            <td>${status.getTitle()}</td>
+                            <td>${status.getDescription()}</td>
+                            <td>${status.getLocation().getLocationName()}</td>
+                            <td>${status.getPrivacy()}</td>
+
+                            <c:forEach var="image" items="${status.getStatusAttachmentList()}">
+                                <td><img src="/images${image.getAttachmentPath()}" alt="" height="100px" width="100px" style="object-fit: cover"/></td>
+                            </c:forEach>
+                            <td><a href="${updateLink}">Update</a></td>
+                            <td>
+                                <a href="${deleteLink}" onclick="if(!(confirm('Are your sure your want to delete this customer?'))) return false">Delete</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
+                <!-- end post -->
+            </div>
+        </div>
+        </div>
 </html>
